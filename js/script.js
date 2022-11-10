@@ -165,10 +165,15 @@ return quote
  * `printQuote` function
  ***/
 
+function getRndColor() {
+    return 'hsl(' + (360 * Math.random()) + ',50%,50%)'
+}
 const printQuote = () => {
+  let body = document.querySelector('body')
+  body.style.backgroundColor = getRndColor();
   let getQuote = getRandomQuote()
   let html = `<p class="quote">${getQuote.quote}</p>
-              <p class="source">${getQuote.author}`
+  <p class="source">${getQuote.author}`
   if (getQuote.year) {
     html += `<span class= "year"> ${getQuote.year}</span></p>`
   } else if (getQuote.citation) {
@@ -176,8 +181,11 @@ const printQuote = () => {
   } else {
     html += `</p>`
   }
-return document.getElementById('quote-box').innerHTML = html
+  return document.getElementById('quote-box').innerHTML = html
 }
+setInterval(printQuote, 10000)
+
+
 
 
 
